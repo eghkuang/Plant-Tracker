@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const axios = require("axios");
 const db = require('./model.js');
@@ -7,6 +8,7 @@ const PORT = 4000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 
 app.get('/api/allPlants', (req, res) => {

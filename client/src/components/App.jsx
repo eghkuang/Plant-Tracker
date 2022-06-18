@@ -11,15 +11,19 @@ class App extends React.Component {
     }
 
     componentDidMount () {
-        this.allPlants();
+        this.onePlant();
     }
 
     allPlants () {
         axios.get('/api/allPlants')
             .then((res) => {
                 console.log('res?', res);
+                var list = [];
+                res.data.map((plant) => {
+                    list.push(plant.common[0]);
+                });
                 this.setState({
-                    plants: res.data
+                    plants: list
                 });
             });
     }
@@ -36,7 +40,11 @@ class App extends React.Component {
 
     render () {
         return (
-            <Title>plant stuuuuff</Title>
+            <div>
+                <h1>AHHHHH</h1>
+                <Title>plant stuuuuff</Title>
+                <div>this.state.allPlants</div>
+            </div>
         );
     }
 }
